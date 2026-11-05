@@ -13,10 +13,9 @@ export const site = {
   available: true,
   links: {
     github: "https://github.com/kingsleychinecheremibeh",
-    // TODO: replace placeholders with real profiles
-    linkedin: "https://www.linkedin.com/in/your-handle",
-    x: "https://x.com/your-handle",
-    cv: "/cv.pdf", // TODO: drop your CV at public/cv.pdf
+    linkedin: "https://www.linkedin.com/in/kingsley-ibeh-930a073a6",
+    whatsapp: "https://wa.me/2348137511883",
+    cv: "/cv.pdf",
   },
 };
 
@@ -37,19 +36,29 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Full-stack e-commerce platform",
-    kind: "Product",
+    title: "Shoppe",
+    kind: "Full-stack e-commerce platform",
     summary:
       "An end-to-end storefront with an admin side, built with a production-oriented backend.",
     points: [
-      "Product and inventory management",
-      "Secure authentication with role-based access",
-      "Admin and management functionality",
-      "Paystack payment integration",
-      "Redis integration and Cloudinary media management",
+      "JWT auth with HTTP-only cookies, refresh token rotation and role-based access control",
+      "Admin dashboard for products, inventory, orders, users, shipping and analytics",
+      "Stripe and Paystack payments, Cloudinary media, Swagger API docs, Redis caching",
     ],
-    stack: ["Redis", "Paystack", "Cloudinary"], // TODO: confirm the rest of the stack, then add it
-    // TODO: add href (repo or live demo) when ready
+    stack: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Prisma", "Redis", "Stripe", "Paystack", "Cloudinary"],
+    href: "https://github.com/kingsleychinecheremibeh/shoppe",
+  },
+  {
+    title: "Eshop",
+    kind: "Multi-vendor e-commerce platform · In progress",
+    summary:
+      "A scalable marketplace supporting customers, vendors and administrators.",
+    points: [
+      "Email verification, password reset and role-based access control",
+      "REST APIs for products, carts, orders, payments, reviews and wishlists",
+      "Redis caching to reduce database load; Jest and Supertest backend tests",
+    ],
+    stack: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Prisma", "Redis", "AWS S3", "Stripe", "Paystack"],
   },
   {
     title: "AI-assisted marketing intelligence platform",
@@ -66,20 +75,24 @@ export const projects: Project[] = [
     confidential: true,
   },
   {
-    title: "Personal engineering projects",
-    kind: "Open source & experiments",
-    summary:
-      "Independent products I build to explore architecture, solve practical problems and sharpen my engineering.",
-    points: ["See the repositories on GitHub"],
-    stack: [],
-    href: "https://github.com/kingsleychinecheremibeh",
+    title: "QueueFlow",
+    kind: "Queue management platform",
+    summary: "Streamlines customer service workflows with queue creation, customer management and status tracking.",
+    points: ["Secure REST APIs and a responsive interface for desktop and mobile"],
+    stack: ["Next.js", "TypeScript", "Express", "PostgreSQL"],
   },
 ];
+
+export const education = {
+  school: "New Horizons Nigeria, Lagos",
+  course: "Full Stack Software Development (expected 2026)",
+  certs: ["Certified Front-End Developer", "Certified Back-End Developer"],
+};
 
 export const stack = [
   {
     group: "Backend",
-    items: ["Node.js", "NestJS", "Express", "REST APIs", "Auth & authorisation", "Background jobs", "Payment & third-party integrations"],
+    items: ["Node.js", "NestJS", "Express", "REST APIs", "Auth & authorisation", "Background jobs", "Stripe & Paystack integrations"],
   },
   {
     group: "Frontend",
@@ -87,11 +100,11 @@ export const stack = [
   },
   {
     group: "Data & infra",
-    items: ["PostgreSQL", "Redis", "Prisma", "Drizzle", "BullMQ", "Docker", "Linux & VPS", "CI/CD", "Cloudflare"],
+    items: ["PostgreSQL", "MongoDB", "Redis", "Prisma", "Drizzle", "BullMQ", "Docker", "Linux & VPS", "CI/CD", "Cloudflare", "AWS S3", "Cloudinary"],
   },
   {
     group: "Practices",
-    items: ["API security", "Load testing", "Database optimisation", "Logging & monitoring", "Automated testing", "Production troubleshooting"],
+    items: ["API security", "Load testing", "Database optimisation", "Logging & monitoring", "Automated testing (Jest, Supertest)", "Production troubleshooting"],
   },
 ];
 

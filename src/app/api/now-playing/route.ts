@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse, connection } from "next/server";
 
 // Needs SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET and SPOTIFY_REFRESH_TOKEN in env.
-// Without them the route returns 204 and the widget stays hidden.
+// Without them the route returns an empty object and the widget stays hidden.
 
 const TOKEN_URL = "https://accounts.spotify.com/api/token";
 const NOW_URL = "https://api.spotify.com/v1/me/player/currently-playing";
@@ -42,11 +42,12 @@ function shape(t: SpotifyTrack, isPlaying: boolean) {
 }
 
 export async function GET() {
+  await connection(); // opt out of build-time prerendering so this runs per request
   const token = await getAccessToken();
-  if (!token) return new NextResponse(null, { status: 204 });
+  if (!token) return NextResponse.json({});
 
   const headers = { Authorization: `Bearer ${token}` };
-  const cacheHeaders = { "Cache-Control": "public, s-maxage=30, stale-while-revalidate=60" };
+  const cacheHeaders = { "Cache-Control": "public, s-maxage=10, stale-while-revalidate=20" };
 
   const now = await fetch(NOW_URL, { headers, cache: "no-store" });
   if (now.status === 200) {
@@ -62,5 +63,6 @@ export async function GET() {
     if (item) return NextResponse.json(shape(item, false), { headers: cacheHeaders });
   }
 
-  return new NextResponse(null, { status: 204 });
+  return NextResponse.json({});
 }
+

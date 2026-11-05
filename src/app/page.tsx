@@ -1,9 +1,8 @@
 import { Reveal } from "@/components/Reveal";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { CopyEmail } from "@/components/CopyEmail";
 import { NowPlaying } from "@/components/NowPlaying";
 import { FlowDiagram } from "@/components/FlowDiagram";
-import { site, about, projects, stack, principles, services } from "@/lib/site";
+import { site, about, projects, stack, principles, services, education } from "@/lib/site";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -20,7 +19,6 @@ export default function Home() {
           <a href="#work" className="transition-colors hover:text-foreground">work</a>
           <a href="#stack" className="transition-colors hover:text-foreground">stack</a>
           <a href="#contact" className="transition-colors hover:text-foreground">contact</a>
-          <ThemeToggle />
         </nav>
       </header>
 
@@ -28,12 +26,6 @@ export default function Home() {
         {/* Hero */}
         <section className="pb-24 pt-20 sm:pt-28">
           <Reveal>
-            {site.available && (
-              <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">
-                <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-accent" />
-                Available for freelance &amp; contract work
-              </p>
-            )}
             <h1 className="font-serif text-6xl leading-[1.02] tracking-tight sm:text-8xl">
               {site.name}.
             </h1>
@@ -41,7 +33,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm">
               <a href={site.links.github} target="_blank" rel="noreferrer" className="underline decoration-line underline-offset-4 hover:decoration-accent">GitHub</a>
               <a href={site.links.linkedin} target="_blank" rel="noreferrer" className="underline decoration-line underline-offset-4 hover:decoration-accent">LinkedIn</a>
-              <a href={site.links.x} target="_blank" rel="noreferrer" className="underline decoration-line underline-offset-4 hover:decoration-accent">X</a>
+              <a href={site.links.whatsapp} target="_blank" rel="noreferrer" className="underline decoration-line underline-offset-4 hover:decoration-accent">WhatsApp</a>
               <a href={`mailto:${site.email}`} className="underline decoration-line underline-offset-4 hover:decoration-accent">Email</a>
             </div>
           </Reveal>
@@ -134,6 +126,23 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Education */}
+        <section className="border-t border-line py-20">
+          <SectionLabel>Education</SectionLabel>
+          <Reveal>
+            <h3 className="font-serif text-2xl">{education.school}</h3>
+            <p className="mt-1 text-sm text-muted">{education.course}</p>
+            <ul className="mt-4 space-y-1 text-sm">
+              {education.certs.map((c) => (
+                <li key={c} className="flex gap-3">
+                  <span className="text-muted">—</span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </section>
+
         {/* Work with me + contact */}
         <section id="contact" className="border-t border-line py-20">
           <SectionLabel>Work with me</SectionLabel>
@@ -157,7 +166,7 @@ export default function Home() {
       </main>
 
       <footer className="mx-auto max-w-3xl border-t border-line px-6 py-8 font-mono text-xs text-muted">
-        © {new Date().getFullYear()} {site.fullName}
+        © {site.fullName}
       </footer>
     </>
   );

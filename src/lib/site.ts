@@ -85,7 +85,7 @@ export const projects: Project[] = [
 
 export const education = {
   school: "New Horizons Nigeria, Lagos",
-  course: "Full Stack Software Development (expected 2026)",
+  course: "Full Stack Software Development · Completed June 2026",
   certs: ["Certified Front-End Developer", "Certified Back-End Developer"],
 };
 

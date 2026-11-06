@@ -4,7 +4,13 @@
 export const site = {
   name: "Chinecherem",
   fullName: "Kingsley Chinecherem Ibeh",
-  url: "https://chinecherem.dev",
+  // No custom domain yet: on Vercel, use the project's production *.vercel.app address.
+  // Once you own a domain, set SITE_URL in Vercel (e.g. https://chinecherem.dev).
+  url:
+    process.env.SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "http://localhost:3000"),
   role: "Software Engineer",
   tagline: "Software engineer. I build backend systems and the products on top of them.",
   description:
